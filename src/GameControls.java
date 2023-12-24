@@ -1,3 +1,4 @@
 public class GameControls {
-    Player player = new Player();
+    private Player player = new Player();
+    private String gameStatus;
 }
