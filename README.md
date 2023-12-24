@@ -7,6 +7,7 @@ Loja e labirintit
    - Ne loje jane te vendosura dhe thesare qe i mbledh lojtari gate kohes qe leviz.
    - Lojtari fiton duke arritur daljen me maksimumin e pikeve dhe loja mund te ruhet dhe te ringarkohet.
 2. Projektimi I klasave dhe implementimi:
+
 2.1 Klasa Lojtar:
    - Atributet:
      - Pozicioni i lojtarit ne loje.
@@ -16,6 +17,7 @@ Loja e labirintit
      - leviz: Lejon lojtarin te levize ne labirint.
      - mblidhThesar: Mbledh thesaret.
      - eshteNeDalje: Kontrollon nese lojtari ka arritur daljen.
+
 2.2 Klasa Labirint:
    - Atributet:
      - Nje rrjet dinamik qe paraqet labirintin.
@@ -25,6 +27,7 @@ Loja e labirintit
      - eshteMur: Kontrollon nese nje vendndodhje specifike ne labirint eshte nje mur.
      - eshteThesar: Kontrollon nese nje vendndodhje specifike ne labirint permban nje thesar.
      - eshteDalje: Kontrollon nese nje vendndodhje specifike ne labirint eshte dalja.
+
 2.3 Klasa KontrolleriLojes:
    - Atributet:
      - Objektet Lojtar dhe Labirint.
@@ -35,6 +38,7 @@ Loja e labirintit
      - perfundoLojen: Percakton rezultatin e lojes, update-on piket dhe shfaq rezultatet.
      - ruajLojen: Ruan gjendjen aktuale te lojes, duke perfshire piket e lojareve dhe formen e labirintit ne nje file.
      - ngarkoLojen: Ngarkon gjendjen e nje loje te meparshme.
+
 3. Menuja e bazuar ne console (Jo-GUI):
    - Opsionet e menuse:
       1. Fillo nje loje te re.
@@ -43,6 +47,7 @@ Loja e labirintit
       4. Ruaj progresin e lojes.
       5. Ngarko nje loje te ruajtur.
       6. Dil.
+
 4. Nderfaqja grafike me perdoruesin (GUI) duke perdorur Java Swing (Opsionale):
     - Komponentet GUI:
       1. Shfaq labirintin e gjeneruar dinamikisht me mure, rruge te hapura dhe daljen.
@@ -54,6 +59,7 @@ Loja e labirintit
      - Buttons trigger corresponding actions, updating the GUI components.
      - Validim iI inputit nga perdoruesi.
      - Paraqitje vizuale e labirintit dhe levizjeve te perdoruesit.
+
 5. Mekanika e lojes:
    - Mbledhja e thesarit:
      - Ndersa lojtari leviz ne labirint, mund te mbledhin thesare ne baze te te cilave llogariten pike.
