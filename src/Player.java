@@ -17,4 +17,18 @@ public class Player {
         this.treasureCount = treasureCount;
         this.pointsEarned = pointsEarned;
     }
+
+    public void movePlayer(){
+
+    }
+
+    public int collectTreasure(){
+        return 1;
+    }
+
+    public boolean isAnExit(){
+        return true;
+    }
+
+
 }
