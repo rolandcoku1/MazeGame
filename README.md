@@ -15,7 +15,7 @@ Loja e labirintit
    - Metodat:
      - leviz: Lejon lojtarin te levize ne labirint.
      - mblidhThesar: Mbledh thesaret.
-     - eshteNeDalje: Kontrollon nese lojtari ka arritur daljen.
+     - eshteNeDalje: Kontrollon nese lojtari ka arritur daljen. 
 2.2 Klasa Labirint:
    - Atributet:
      - Nje rrjet dinamik qe paraqet labirintin.
@@ -24,7 +24,7 @@ Loja e labirintit
      - gjeneroLabirint: Krijon nje labirint ne menyre dinamike me mure, rruge te hapura, thesare dhe dalje.
      - eshteMur: Kontrollon nese nje vendndodhje specifike ne labirint eshte nje mur.
      - eshteThesar: Kontrollon nese nje vendndodhje specifike ne labirint permban nje thesar.
-     - eshteDalje: Kontrollon nese nje vendndodhje specifike ne labirint eshte dalja.
+     - eshteDalje: Kontrollon nese nje vendndodhje specifike ne labirint eshte dalja. 
 2.3 Klasa KontrolleriLojes:
    - Atributet:
      - Objektet Lojtar dhe Labirint.
