@@ -8,7 +8,7 @@ Loja e labirintit
    - Lojtari fiton duke arritur daljen me maksimumin e pikeve dhe loja mund te ruhet dhe te ringarkohet.
 2. Projektimi I klasave dhe implementimi:
 
-2.1 Klasa Lojtar:
+2.1 Klasa Player:
    - Atributet:
      - Pozicioni i lojtarit ne loje.
      - Numri i thesareve te mbledhura.
@@ -18,7 +18,7 @@ Loja e labirintit
      - mblidhThesar: Mbledh thesaret.
      - eshteNeDalje: Kontrollon nese lojtari ka arritur daljen.
 
-2.2 Klasa Labirint:
+2.2 Klasa Maze:
    - Atributet:
      - Nje rrjet dinamik qe paraqet labirintin.
      - Vendndodhja e thesareve dhe daljes.
@@ -28,9 +28,9 @@ Loja e labirintit
      - eshteThesar: Kontrollon nese nje vendndodhje specifike ne labirint permban nje thesar.
      - eshteDalje: Kontrollon nese nje vendndodhje specifike ne labirint eshte dalja.
 
-2.3 Klasa KontrolleriLojes:
+2.3 Klasa GameControls:
    - Atributet:
-     - Objektet Lojtar dhe Labirint.
+     - Objektet Player dhe Maze.
      - Statusi i lojes (ne vazhdim, fituar, humbur).
    - Metodat:
      - filloLoje: Inicializon nje loje te re me nje labirint te ri te gjeneruar dinamikisht.
