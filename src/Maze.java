@@ -9,11 +9,10 @@ public class Maze{
     private final int mazeSize;
     private final int GRIDSIZE = 10;
     private final int width;
-    private final int height;
     private final int spacing;
     public Maze(int size){
         this.width = 400;
-        this.height = 400;
+        //Calculate the space between each line of the maze
         this.spacing = (int)Math.floor((double) width/GRIDSIZE);
         this.mazeSize = size;
 
@@ -27,14 +26,13 @@ public class Maze{
     public void generateMazeDFS(){
         Cell startCell = cells.getFirst();
         startCell.setVisited(true);
-
         dfs(startCell);
+        new Display(cells,spacing).MazeGrid();
     }
+
     private void dfs(Cell startCell){
         Stack<Cell> stack = new Stack<>();
         stack.push(startCell);
-
-
         while (!stack.isEmpty()){
             Cell currentCell = stack.peek();
             List<Cell> neighbors = getUnvisitedNeighbors(startCell);
@@ -101,110 +99,7 @@ public class Maze{
     private int index(int x, int y){
         return x*mazeSize + y;
     }
-    public void displayMazeGrid(){
-
-        SwingUtilities.invokeLater(() -> {
-            JFrame frame = new JFrame("Maze Game");
-            JPanel cellPanel = new GenerateMaze(cells,spacing);
-            frame.getContentPane().add(cellPanel);
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.setLocation(400,200);
-            frame.setSize(450, 450);
-            frame.setVisible(true);
-        });
-    }
 
 }
-class GenerateMaze extends JPanel{
-    private final List<Cell> cells;
-    private final int spacing;
-
-    public GenerateMaze(List<Cell> cells, int spacing){
-        this.cells = cells;
-        this.spacing = spacing;
-    }
-    @Override
-    protected void paintComponent(Graphics graphics){
-        super.paintComponent(graphics);
-        //Set the color of the grid to black
-        graphics.setColor(Color.black);
-
-        for (Cell cell : cells) {
-            //Set the beginning point coordinates
-            int x = cell.getX() * spacing;
-            int y = cell.getY() * spacing;
-
-            // Draw top line
-            if(cell.getWall()[cell.getTopIndex()]){
-                graphics.drawLine(x, y, x + spacing, y);
-            }
-            // Draw left line
-            if(cell.getWall()[cell.getLeftIndex()]) {
-                graphics.drawLine(x, y, x, y + spacing);
-            }
-            // Draw right line
-            if(cell.getWall()[cell.getRightIndex()]) {
-                graphics.drawLine(x + spacing, y, x + spacing, y + spacing);
-            }
-            // Draw bottom line
-            if(cell.getWall()[cell.getBottomIndex()]) {
-                graphics.drawLine(x, y + spacing, x + spacing, y + spacing);
-            }
-        }
-    }
-};
-class Cell{
-    //Create variables for the indexes of each wall on the boolean array wall;
-    private final int topIndex = 0;
-    private final int rightIndex = 1;
-    private final int bottomIndex = 2;
-    private final int leftIndex = 3;
-    private final int x;
-    private final int y;
-    private boolean[] wall = {true, true, true, true};
-    private boolean visited = false;
-    public Cell(int x, int y){
-        this.x = x;
-        this.y = y;
-    }
-    public int getX() {
-        return x;
-    }
-    public int getY() {
-        return y;
-    }
-    public boolean[] getWall() {
-        return wall;
-    }
-    public int getTopIndex() {
-        return topIndex;
-    }
-    public int getRightIndex() {
-        return rightIndex;
-    }
-    public int getBottomIndex() {
-        return bottomIndex;
-    }
-    public int getLeftIndex() {
-        return leftIndex;
-    }
-    public boolean isVisited() {
-        return visited;
-    }
-    public void setVisited(boolean visited) {
-        this.visited = visited;
-    }
-    public void setTopWall(boolean isWall){
-        wall[topIndex] = isWall;
-    }
-    public void setRightWall(boolean isWall){
-        wall[rightIndex] = isWall;
-    }
-    public void setBottomWall(boolean isWall){
-        wall[bottomIndex] = isWall;
-    }
-    public void setLeftWall(boolean isWall){
-        wall[leftIndex] = isWall;
-    }
-}
+;
 
