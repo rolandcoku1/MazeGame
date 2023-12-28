@@ -11,10 +11,9 @@ public class Cell {
 
     private boolean containsTreasure = false;
 
-    public Cell(int x, int y, boolean containsTreasure) {
+    public Cell(int x, int y) {
         this.x = x;
         this.y = y;
-        this.containsTreasure = containsTreasure;
     }
 
     public int getX() {
@@ -71,5 +70,9 @@ public class Cell {
 
     public boolean ContainsTreasure() {
         return containsTreasure;
+    }
+
+    public void setContainsTreasure(boolean containsTreasure){
+        this.containsTreasure = containsTreasure;
     }
 }

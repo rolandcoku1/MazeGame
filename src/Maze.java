@@ -4,6 +4,7 @@ public class Maze{
     private final List<Cell> cells = new ArrayList<>();
     private final int mazeSize;
     private final int spacing;
+    private final Random random = new Random();
 
     public Maze(int size){
         int width = 400;
@@ -15,8 +16,7 @@ public class Maze{
         //Create the cells objects
         for (int x = 0; x < size; x++){
            for (int y = 0; y < size; y++){
-               Random random = new Random();
-               cells.add(new Cell(x,y, random.nextBoolean()));
+               cells.add(new Cell(x,y));
            }
         }
     }
@@ -114,6 +114,13 @@ public class Maze{
     //based on the cells x and y coordinates.
     private int index(int x, int y){
         return x*mazeSize + y;
+    }
+
+    public void addTreasures(){
+        for (Cell cell : cells){
+            cell.setContainsTreasure(random.nextBoolean());
+        }
+        Display.updateDisplay();
     }
 
 }

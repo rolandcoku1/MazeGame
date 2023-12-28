@@ -68,6 +68,8 @@ public class Display extends JPanel {
         graphics.fillOval(x+(spacing/2) - radius,y+(spacing/2) - radius,2*radius,2*radius);
     }
 
+
+
     public void MazeGrid() {
         SwingUtilities.invokeLater(() -> {
             JFrame frame = new JFrame("Maze Game");
