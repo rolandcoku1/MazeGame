@@ -14,13 +14,13 @@ public class Display extends JPanel {
     @Override
     protected void paintComponent(Graphics graphics) {
         super.paintComponent(graphics);
-        //Set the color of the grid to black
-        graphics.setColor(Color.black);
 
         for (Cell cell : cells) {
             //Set the beginning point coordinates
             int x = cell.getX() * spacing;
             int y = cell.getY() * spacing;
+            //Set the color of the grid to black
+            graphics.setColor(Color.black);
 
             // Draw top line
             if (cell.getWall()[cell.getTopIndex()]) {
@@ -38,7 +38,16 @@ public class Display extends JPanel {
             if (cell.getWall()[cell.getBottomIndex()]) {
                 graphics.drawLine(x, y + spacing, x + spacing, y + spacing);
             }
+            if (cell.ContainsTreasure()){
+                drawTreasure(graphics,x,y);
+            }
         }
+
+    }
+    private void drawTreasure(Graphics graphics, int x, int y){
+        int radius = 5;
+        graphics.setColor(Color.RED);
+        graphics.fillOval(x+(spacing/2) - radius,y+(spacing/2) - radius,2*radius,2*radius);
     }
 
     public void MazeGrid() {
@@ -47,8 +56,8 @@ public class Display extends JPanel {
             JPanel cellPanel = new Display(cells, spacing);
             frame.getContentPane().add(cellPanel);
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.setLocation(400, 200);
-            frame.setSize(450, 450);
+            frame.setLocation(100, 100);
+            frame.setSize(1000, 1000);
             frame.setVisible(true);
         });
     }

@@ -1,11 +1,10 @@
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Stack;
+import java.util.*;
+
 public class Maze{
     private final List<Cell> cells = new ArrayList<>();
     private final int mazeSize;
     private final int spacing;
+
     public Maze(int size){
         int width = 400;
         //Calculate the space between each line of the maze
@@ -16,7 +15,8 @@ public class Maze{
         //Create the cells objects
         for (int x = 0; x < size; x++){
            for (int y = 0; y < size; y++){
-               cells.add(new Cell(x,y));
+               Random random = new Random();
+               cells.add(new Cell(x,y, random.nextBoolean()));
            }
         }
     }

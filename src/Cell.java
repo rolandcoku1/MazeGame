@@ -9,9 +9,12 @@ public class Cell {
     private boolean[] wall = {true, true, true, true};
     private boolean visited = false;
 
-    public Cell(int x, int y) {
+    private boolean containsTreasure = false;
+
+    public Cell(int x, int y, boolean containsTreasure) {
         this.x = x;
         this.y = y;
+        this.containsTreasure = containsTreasure;
     }
 
     public int getX() {
@@ -64,5 +67,9 @@ public class Cell {
 
     public void setLeftWall(boolean isWall) {
         wall[leftIndex] = isWall;
+    }
+
+    public boolean ContainsTreasure() {
+        return containsTreasure;
     }
 }
