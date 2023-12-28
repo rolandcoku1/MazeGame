@@ -5,12 +5,14 @@ import java.util.List;
 public class Display extends JPanel {
     private final List<Cell> cells;
     private final int spacing;
+    private static Display instance;
 
+    private static final int DELAY = 100;
     public Display(List<Cell> cells, int spacing) {
         this.cells = cells;
         this.spacing = spacing;
+        instance = this;
     }
-
     @Override
     protected void paintComponent(Graphics graphics) {
         super.paintComponent(graphics);
@@ -38,8 +40,24 @@ public class Display extends JPanel {
             if (cell.getWall()[cell.getBottomIndex()]) {
                 graphics.drawLine(x, y + spacing, x + spacing, y + spacing);
             }
+            if(cell.isVisited()){
+                graphics.setColor(Color.LIGHT_GRAY);
+                graphics.fillRect(x,y,spacing,spacing);
+            }
             if (cell.ContainsTreasure()){
                 drawTreasure(graphics,x,y);
+            }
+        }
+
+    }
+
+    public static void updateDisplay() {
+        if(instance != null){
+            instance.repaint();
+            try {
+                Thread.sleep(DELAY); // Add a delay for better visualization
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
         }
 
