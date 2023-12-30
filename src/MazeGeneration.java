@@ -1,12 +1,12 @@
 import java.util.*;
 
-public class Maze{
+public class MazeGeneration {
     private final List<Cell> cells = new ArrayList<>();
     private final int mazeSize;
     private final int spacing;
     private final Random random = new Random();
 
-    public Maze(int size){
+    public MazeGeneration(int size){
         int width = 400;
         //Calculate the space between each line of the maze
         int GRIDSIZE = 10;

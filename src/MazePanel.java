@@ -1,7 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 public class MazePanel extends JPanel {
-    Maze maze = new Maze(15);
+    MazeGeneration maze = new MazeGeneration(15);
     public MazePanel() {
         this.setBounds(0,0,800,650);
     }

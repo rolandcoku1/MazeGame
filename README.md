@@ -18,7 +18,7 @@ Loja e labirintit
      - mblidhThesar: Mbledh thesaret.
      - eshteNeDalje: Kontrollon nese lojtari ka arritur daljen.
 
-2.2 Klasa Maze:
+2.2 Klasa MazeGeneration:
    - Atributet:
      - Nje rrjet dinamik qe paraqet labirintin.
      - Vendndodhja e thesareve dhe daljes.
@@ -30,7 +30,7 @@ Loja e labirintit
 
 2.3 Klasa GameControls:
    - Atributet:
-     - Objektet Player dhe Maze.
+     - Objektet Player dhe MazeGeneration.
      - Statusi i lojes (ne vazhdim, fituar, humbur).
    - Metodat:
      - filloLoje: Inicializon nje loje te re me nje labirint te ri te gjeneruar dinamikisht.

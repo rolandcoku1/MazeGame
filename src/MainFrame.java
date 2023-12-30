@@ -2,7 +2,7 @@ import javax.swing.*;
 public class MainFrame extends JFrame {
     Player player = new Player();
     public MainFrame(){
-        this.setTitle("Maze Game");
+        this.setTitle("MazeGeneration Game");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(800,650);
         this.setLayout(null);
