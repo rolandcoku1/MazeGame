@@ -13,20 +13,23 @@ public class Maze{
         this.spacing = (int)Math.floor((double) width / GRIDSIZE);
         this.mazeSize = size;
 
-        //Create the cells objects
-        for (int x = 0; x < size; x++){
-           for (int y = 0; y < size; y++){
-               cells.add(new Cell(x,y));
-           }
+        this.createCells();
+        this.generateMazeDFS();
+        this.addTreasures();
+    }
+    //Create the cells objects
+    public void createCells(){
+        for (int x = 0; x < mazeSize; x++){
+            for (int y = 0; y < mazeSize; y++){
+                cells.add(new Cell(x,y));
+            }
         }
     }
-
     //Choose the starting cell for the maze and call the "Depth First Search" algorithm to generate maze, then display maze grid.
     public void generateMazeDFS(){
-        new Display(cells,spacing).MazeGrid();
         Cell startCell = cells.getFirst();
         startCell.setVisited(true);
-        Display.updateDisplay();
+        System.out.println("Generating maze");
         dfs(startCell);
     }
 
@@ -41,7 +44,6 @@ public class Maze{
                 Collections.shuffle(neighbors);
                 removeWall(currentCell, neighbors.getFirst());
                 neighbors.getFirst().setVisited(true);
-                Display.updateDisplay();
                 dfs(neighbors.getFirst());//Recursive call to dfs algorithm to every neighbor of the current cell until we reach a cell with no unvisited neighbors
             } else {
                 stack.pop();//Call to pop() method to remove the top cell from the stack when that cell has no more unvisited neighbors
@@ -120,8 +122,13 @@ public class Maze{
         for (Cell cell : cells){
             cell.setContainsTreasure(random.nextBoolean());
         }
-        Display.updateDisplay();
     }
 
+    public List<Cell> getCells() {
+        return cells;
+    }
+    public int getSpacing() {
+        return spacing;
+    }
 }
 
