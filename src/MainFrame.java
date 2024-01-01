@@ -1,6 +1,7 @@
 import javax.swing.*;
 public class MainFrame extends JFrame {
-    Player player = new Player();
+    MazeGeneration maze  = new MazeGeneration(10);
+    Player player = new Player(maze);
     public MainFrame(){
         this.setTitle("MazeGeneration Game");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -8,7 +9,7 @@ public class MainFrame extends JFrame {
         this.setLayout(null);
         this.addKeyListener(new GameControls(player));
         this.add(player.getPlayerLabel());
-        this.add(new MazePanel());
+        this.add(new MazePanel(maze));
 
         this.setVisible(true);
     }

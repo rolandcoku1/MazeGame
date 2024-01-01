@@ -1,9 +1,10 @@
 import javax.swing.*;
 import java.awt.*;
 public class MazePanel extends JPanel {
-    MazeGeneration maze = new MazeGeneration(15);
-    public MazePanel() {
+    MazeGeneration maze;
+    public MazePanel(MazeGeneration maze) {
         this.setBounds(0,0,800,650);
+        this.maze = maze;
     }
     @Override
     protected void paintComponent(Graphics graphics) {
@@ -13,23 +14,24 @@ public class MazePanel extends JPanel {
             //Set the beginning point coordinates
             int x = cell.getX() * maze.getSpacing();
             int y = cell.getY() * maze.getSpacing();
+
             //Set the color of the grid to black
             graphics.setColor(Color.black);
 
             // Draw top line
-            if (cell.getWall()[cell.getTopIndex()]) {
+            if (cell.hasTopWall()) {
                 graphics.drawLine(x, y, x + maze.getSpacing(), y);
             }
             // Draw left line
-            if (cell.getWall()[cell.getLeftIndex()]) {
+            if (cell.hasLeftWall()) {
                 graphics.drawLine(x, y, x, y + maze.getSpacing());
             }
             // Draw right line
-            if (cell.getWall()[cell.getRightIndex()]) {
+            if (cell.hasRightWall()) {
                 graphics.drawLine(x + maze.getSpacing(), y, x + maze.getSpacing(), y + maze.getSpacing());
             }
             // Draw bottom line
-            if (cell.getWall()[cell.getBottomIndex()]) {
+            if (cell.hasBottomWall()) {
                 graphics.drawLine(x, y + maze.getSpacing(), x + maze.getSpacing(), y + maze.getSpacing());
             }
             if(cell.isVisited()){
@@ -45,11 +47,5 @@ public class MazePanel extends JPanel {
         int radius = 5;
         graphics.setColor(Color.RED);
         graphics.fillOval(x+(maze.getSpacing()/2) - radius,y+(maze.getSpacing()/2) - radius,2*radius,2*radius);
-    }
-
-    private void drawPlayer(Graphics graphics, int x, int y){
-        int radius = 10;
-        graphics.setColor(Color.BLACK);
-        graphics.fillOval(x+(maze.getSpacing()/2)-radius,y+(maze.getSpacing()/2)-radius,2*radius,2*radius);
     }
 }

@@ -6,9 +6,8 @@ public class Cell {
     private final int leftIndex = 3;
     private final int x;
     private final int y;
-    private boolean[] wall = {true, true, true, true};
+    private final boolean[] wall = {true, true, true, true};
     private boolean visited = false;
-
     private boolean containsTreasure = false;
 
     public Cell(int x, int y) {
@@ -23,27 +22,18 @@ public class Cell {
     public int getY() {
         return y;
     }
-
-    public boolean[] getWall() {
-        return wall;
+    public boolean hasTopWall(){
+        return wall[topIndex];
     }
-
-    public int getTopIndex() {
-        return topIndex;
+    public boolean hasLeftWall(){
+        return wall[leftIndex];
     }
-
-    public int getRightIndex() {
-        return rightIndex;
+    public boolean hasBottomWall(){
+        return wall[bottomIndex];
     }
-
-    public int getBottomIndex() {
-        return bottomIndex;
+    public boolean hasRightWall(){
+        return wall[rightIndex];
     }
-
-    public int getLeftIndex() {
-        return leftIndex;
-    }
-
     public boolean isVisited() {
         return visited;
     }

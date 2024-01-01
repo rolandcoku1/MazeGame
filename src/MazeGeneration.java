@@ -6,12 +6,11 @@ public class MazeGeneration {
     private final int spacing;
     private final Random random = new Random();
 
-    public MazeGeneration(int size){
+    public MazeGeneration(int mazeSize){
+        this.mazeSize = mazeSize;
         int width = 400;
         //Calculate the space between each line of the maze
-        int GRIDSIZE = 10;
-        this.spacing = (int)Math.floor((double) width / GRIDSIZE);
-        this.mazeSize = size;
+        this.spacing = (int)Math.floor((double) width / mazeSize);
 
         this.createCells();
         this.generateMazeDFS();
@@ -19,8 +18,8 @@ public class MazeGeneration {
     }
     //Create the cells objects
     public void createCells(){
-        for (int x = 0; x < mazeSize; x++){
-            for (int y = 0; y < mazeSize; y++){
+        for (int y = 0; y < mazeSize; y++){
+            for (int x = 0; x < mazeSize; x++){
                 cells.add(new Cell(x,y));
             }
         }
@@ -29,25 +28,27 @@ public class MazeGeneration {
     public void generateMazeDFS(){
         Cell startCell = cells.getFirst();
         startCell.setVisited(true);
-        System.out.println("Generating maze");
         dfs(startCell);
     }
 
     //DFS algorithm using stack to keep track of all the neighbors of each cell and recurse through all of them randomly
-    private void dfs(Cell startCell){
-        Stack<Cell> stack = new Stack<>();
-        stack.push(startCell);
-        while (!stack.isEmpty()){
-            Cell currentCell = stack.peek();//Use of peek() method to get the cell on top of the stack without removing it and set it as current cell
-            List<Cell> neighbors = getUnvisitedNeighbors(startCell);
-            if(!neighbors.isEmpty()){
+    Stack<Cell> stack = new Stack<>();
+    private void dfs(Cell currentCell){
+        stack.push(currentCell);
+        while (!stack.isEmpty()) {
+            currentCell = stack.peek();//Use of peek() method to get the cell on top of the stack without removing it and set it as current cell
+            List<Cell> neighbors = getUnvisitedNeighbors(currentCell);
+            if (!neighbors.isEmpty()) {
                 Collections.shuffle(neighbors);
-                removeWall(currentCell, neighbors.getFirst());
-                neighbors.getFirst().setVisited(true);
-                dfs(neighbors.getFirst());//Recursive call to dfs algorithm to every neighbor of the current cell until we reach a cell with no unvisited neighbors
+                Cell neighbor = neighbors.getFirst();
+                removeWall(currentCell, neighbor);
+                neighbor.setVisited(true);
+
+                dfs(neighbor);//Recursive call to dfs algorithm to every neighbor of the current cell until we reach a cell with no unvisited neighbors
+
             } else {
                 stack.pop();//Call to pop() method to remove the top cell from the stack when that cell has no more unvisited neighbors
-                            //This way we move on to the last visited cell which had unvisited neighbors
+                //This way we move on to the last visited cell which had unvisited neighbors
             }
 
         }
@@ -59,8 +60,8 @@ public class MazeGeneration {
 
         //Check if our current cell has an available top neighbor
         if (cell.getY()>0){
-            Cell topCell = cells.get(index(cell.getX(), cell.getY())-1); //If it does have one we access this cell simply by reducing the y coordinate by 1
-            if(!topCell.isVisited()){//Check if the top sell is a visited cell or not
+            Cell topCell = cells.get(index(cell.getX(), cell.getY()-1)); //If it does have one we access this cell simply by reducing the y coordinate by 1 - !!!!!!!!!!!!!!!!!!!!!!!!!!
+            if(!topCell.isVisited()){//Check if the top cell is a visited cell or not
                 neighbors.add(topCell);
             }
         }
@@ -88,7 +89,6 @@ public class MazeGeneration {
                 neighbors.add(rightCell);
             }
         }
-
         return neighbors;
     }
 
@@ -114,8 +114,8 @@ public class MazeGeneration {
 
     //Since we have a one dimensional array list to store all the cells of the grid we need to calculate the index of the cell in the array list
     //based on the cells x and y coordinates.
-    private int index(int x, int y){
-        return x*mazeSize + y;
+    public int index(int x, int y){
+        return y*mazeSize + x;
     }
 
     public void addTreasures(){
@@ -129,6 +129,9 @@ public class MazeGeneration {
     }
     public int getSpacing() {
         return spacing;
+    }
+    public int getMazeSize() {
+        return mazeSize;
     }
 }
 

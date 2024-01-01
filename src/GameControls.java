@@ -14,7 +14,6 @@ public class GameControls implements KeyListener {
         int keyCode = keyPress.getKeyCode();
         switch (keyCode){
             case KeyEvent.VK_UP:
-                System.out.println(player.getPlayerPositionY());
                 player.movePlayerUp();
                 break;
             case KeyEvent.VK_DOWN:
