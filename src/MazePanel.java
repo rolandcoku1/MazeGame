@@ -38,7 +38,7 @@ public class MazePanel extends JPanel {
                 graphics.setColor(Color.LIGHT_GRAY);
                 graphics.fillRect(x,y,maze.getSpacing(),maze.getSpacing());
             }
-            if (cell.ContainsTreasure()){
+            if (cell.containsTreasure()){
                 drawTreasure(graphics,x,y);
             }
         }

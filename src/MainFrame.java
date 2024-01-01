@@ -1,6 +1,6 @@
 import javax.swing.*;
 public class MainFrame extends JFrame {
-    MazeGeneration maze  = new MazeGeneration(10);
+    MazeGeneration maze  = new MazeGeneration(20);
     Player player = new Player(maze);
     public MainFrame(){
         this.setTitle("MazeGeneration Game");

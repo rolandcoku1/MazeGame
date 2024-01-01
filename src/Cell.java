@@ -58,7 +58,7 @@ public class Cell {
         wall[leftIndex] = isWall;
     }
 
-    public boolean ContainsTreasure() {
+    public boolean containsTreasure() {
         return containsTreasure;
     }
 

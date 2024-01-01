@@ -4,45 +4,46 @@ public class Player extends JFrame {
     private int playerPositionY;
     private int playerPositionX;
     private int treasureCount;
-    private int pointsEarned;
     private MazeGeneration maze;
     private JLabel playerLabel;
     public Player(MazeGeneration maze){
         this.playerPositionX = 0;
         this.playerPositionY = 0;
-        this.pointsEarned = 0;
         this.treasureCount = 0;
         this.maze = maze;
 
         ImageIcon character = new ImageIcon("C:\\Users\\rolan\\IdeaProjects\\MazeGame\\src\\character.png");
-        character = new ImageIcon(character.getImage().getScaledInstance(40,40, Image.SCALE_SMOOTH));
+        character = new ImageIcon(character.getImage().getScaledInstance(this.maze.getSpacing(),this.maze.getSpacing(), Image.SCALE_SMOOTH));
         playerLabel = new JLabel();
-        playerLabel.setBounds(this.getPlayerPositionX(),this.getPlayerPositionY(),40,40);
+        playerLabel.setBounds(this.getPlayerPositionX(),this.getPlayerPositionY(),this.maze.getSpacing(),this.maze.getSpacing());
         playerLabel.setIcon(character);
     }
 
-    public Player(int playerPositionY, int playerPositionX, int treasureCount, int pointsEarned){
+    public Player(int playerPositionY, int playerPositionX, int treasureCount){
         this.playerPositionY = playerPositionY;
         this.playerPositionX = playerPositionX;
         this.treasureCount = treasureCount;
-        this.pointsEarned = pointsEarned;
     }
 
     public void movePlayerRight(){
         if(!this.HasRightWall())
-            playerLabel.setLocation(playerPositionX+=40,playerPositionY);
+            playerLabel.setLocation(playerPositionX+=maze.getSpacing(),playerPositionY);
+        collectTreasure();
     }
     public void movePlayerLeft(){
         if(!this.hasLeftWall())
-            playerLabel.setLocation(playerPositionX-=40,playerPositionY);
+            playerLabel.setLocation(playerPositionX-=maze.getSpacing(),playerPositionY);
+        collectTreasure();
     }
     public void movePlayerUp(){
         if (!this.hasTopWall())
-            playerLabel.setLocation(playerPositionX,playerPositionY-=40);
+            playerLabel.setLocation(playerPositionX,playerPositionY-=maze.getSpacing());
+        collectTreasure();
     }
     public void movePlayerDown(){
         if (!this.hasBottomWall())
-            playerLabel.setLocation(playerPositionX,playerPositionY+=40);
+            playerLabel.setLocation(playerPositionX,playerPositionY+=maze.getSpacing());
+        collectTreasure();
     }
 
     private boolean hasTopWall(){
@@ -62,8 +63,11 @@ public class Player extends JFrame {
         return (((int) Math.round((double) playerPositionY/maze.getSpacing()))*maze.getMazeSize() + (int) Math.round((double) playerPositionX/maze.getSpacing()));
     }
 
-    public int collectTreasure(){
-        return 1;
+    public void collectTreasure(){
+        if(maze.getCells().get(getPlayerCellIndex()).containsTreasure()){
+            maze.getCells().get(getPlayerCellIndex()).setContainsTreasure(false);
+            treasureCount++;
+        }
     }
 
     public boolean isAnExit(){

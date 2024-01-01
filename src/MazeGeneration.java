@@ -8,7 +8,7 @@ public class MazeGeneration {
 
     public MazeGeneration(int mazeSize){
         this.mazeSize = mazeSize;
-        int width = 400;
+        int width = 600;
         //Calculate the space between each line of the maze
         this.spacing = (int)Math.floor((double) width / mazeSize);
 
