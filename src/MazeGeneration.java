@@ -26,7 +26,8 @@ public class MazeGeneration {
     }
     //Choose the starting cell for the maze and call the "Depth First Search" algorithm to generate maze, then display maze grid.
     public void generateMazeDFS(){
-        Cell startCell = cells.getFirst();
+       // Cell startCell = cells.getFirst();
+        Cell startCell = cells.get(0);
         startCell.setVisited(true);
         dfs(startCell);
     }
@@ -40,7 +41,8 @@ public class MazeGeneration {
             List<Cell> neighbors = getUnvisitedNeighbors(currentCell);
             if (!neighbors.isEmpty()) {
                 Collections.shuffle(neighbors);
-                Cell neighbor = neighbors.getFirst();
+                //Cell neighbor = neighbors.getFirst();
+                Cell neighbor = neighbors.get(0);
                 removeWall(currentCell, neighbor);
                 neighbor.setVisited(true);
 

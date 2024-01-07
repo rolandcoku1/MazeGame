@@ -1,16 +1,34 @@
 import javax.swing.*;
+
 public class MainFrame extends JFrame {
-    MazeGeneration maze  = new MazeGeneration(20);
-    Player player = new Player(maze);
-    public MainFrame(){
+    private MazeGeneration maze = new MazeGeneration(20);
+    private Player player = new Player(maze);
+    private Music musicPlayer;
+    private String musicFilePath = "path/to/your/music.wav"; // replace with actual path
+
+    public MainFrame() {
         this.setTitle("MazeGeneration Game");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setSize(800,650);
+        this.setSize(800, 650);
         this.setLayout(null);
+
+        // Initialize musicPlayer
+        musicPlayer = new Music();
+
+        // Start playing the music
+        musicPlayer.playMusic(musicFilePath);
+
+        // Display a message dialog (optional)
+        JOptionPane.showMessageDialog(null, "Press OK to stop playing");
+
+        // Stop playing the music when the user clicks OK
+        musicPlayer.stopMusic();
+
         this.addKeyListener(new GameControls(player));
         this.add(player.getPlayerLabel());
         this.add(new MazePanel(maze));
 
         this.setVisible(true);
     }
+
 }
