@@ -2,14 +2,18 @@ import java.util.*;
 
 public class MazeGeneration {
     private final List<Cell> cells = new ArrayList<>();
-    private final int mazeSize;
-    private final int spacing;
+//    private final int mazeSize;
+    private final int SPACING = 40;
+    private final int MAZE_ROWS;
+    private final int MAZE_COLUMNS;
     private final Random random = new Random();
-    public MazeGeneration(int mazeSize){
-        this.mazeSize = mazeSize;
-        int width = 600;
+    public MazeGeneration(int WINDOW_WIDTH, int WINDOW_HEIGHT){
+
+        this.MAZE_ROWS = (WINDOW_HEIGHT-20) / SPACING;
+        this.MAZE_COLUMNS = (WINDOW_WIDTH-20) / SPACING;
+//        this.mazeSize = mazeSize;
         //Calculate the space between each line of the maze
-        this.spacing = (int)Math.floor((double) width / mazeSize);
+//        this.spacing = (int)Math.floor((double) WIDTH / mazeSize);
 
         this.createCells();
         this.generateMazeDFS();
@@ -17,8 +21,8 @@ public class MazeGeneration {
     }
     //Create the cells objects
     public void createCells(){
-        for (int y = 0; y < mazeSize; y++){
-            for (int x = 0; x < mazeSize; x++){
+        for (int y = 0; y < getMAZE_ROWS(); y++){
+            for (int x = 0; x < getMAZE_COLUMNS(); x++){
                 cells.add(new Cell(x,y));
             }
         }
@@ -76,7 +80,7 @@ public class MazeGeneration {
         }
 
         //Check the bottom cell by comparing current cells y coordinate with the size of our maze;
-        if (cell.getY()<mazeSize-1){
+        if (cell.getY()<getMAZE_ROWS()-1){
             Cell bottomCell = cells.get(index(cell.getX(), cell.getY()+1));//Access the bottom neighbor by adding 1 to the y coordinate of the current cell
             if(!bottomCell.isVisited()){
                 neighbors.add(bottomCell);
@@ -84,7 +88,7 @@ public class MazeGeneration {
         }
 
         //Check the right cell
-        if (cell.getX()<mazeSize-1){
+        if (cell.getX()<getMAZE_COLUMNS()-1){
             Cell rightCell = cells.get(index(cell.getX()+1, cell.getY()));//Access it by adding 1 to the x coordinate
             if(!rightCell.isVisited()){
                 neighbors.add(rightCell);
@@ -116,7 +120,7 @@ public class MazeGeneration {
     //Since we have a one dimensional array list to store all the cells of the grid we need to calculate the index of the cell in the array list
     //based on the cells x and y coordinates.
     public int index(int x, int y){
-        return y*mazeSize + x;
+        return y*MAZE_COLUMNS + x;
     }
 
     public void addTreasures(){
@@ -129,10 +133,17 @@ public class MazeGeneration {
         return cells;
     }
     public int getSpacing() {
-        return spacing;
+        return SPACING;
     }
-    public int getMazeSize() {
-        return mazeSize;
+//    public int getMazeSize() {
+//        return mazeSize;
+//    }
+
+    public int getMAZE_ROWS() {
+        return MAZE_ROWS;
+    }
+    public int getMAZE_COLUMNS() {
+        return MAZE_COLUMNS;
     }
 }
 

@@ -62,7 +62,7 @@ public class Player extends JFrame implements Serializable {
     }
 
     private int getPlayerCellIndex(){
-        return (((int) Math.round((double) playerPositionY/maze.getSpacing()))*maze.getMazeSize() + (int) Math.round((double) playerPositionX/maze.getSpacing()));
+        return (((int) Math.round((double) playerPositionY/maze.getSpacing()))*maze.getMAZE_COLUMNS() + (int) Math.round((double) playerPositionX/maze.getSpacing()));
     }
 
     public void collectTreasure(){

@@ -3,7 +3,7 @@ import java.awt.*;
 public class MazePanel extends JPanel {
     MazeGeneration maze;
     public MazePanel(MazeGeneration maze) {
-        this.setBounds(0,0,800,650);
+        this.setBounds(0,0,1000,650);
         this.maze = maze;
     }
     @Override
