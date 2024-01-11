@@ -15,6 +15,8 @@ public class MainFrame extends JFrame {
         this.setSize(WINDOW_WIDTH,WINDOW_HEIGHT);
         this.setLayout(null);
 
+        new GraphicsFrame(WINDOW_WIDTH,WINDOW_HEIGHT,maze);
+
 //        // Initialize musicPlayer
 //        musicPlayer = new Music();
 //

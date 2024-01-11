@@ -3,7 +3,7 @@ import java.util.*;
 public class MazeGeneration {
     private final List<Cell> cells = new ArrayList<>();
 //    private final int mazeSize;
-    private final int SPACING = 40;
+    private final int SPACING = 80;
     private final int MAZE_ROWS;
     private final int MAZE_COLUMNS;
     private final Random random = new Random();
