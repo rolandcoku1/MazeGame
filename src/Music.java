@@ -8,7 +8,7 @@ public class Music {
     private Clip clip;
 
     public static void main(String[] args) {
-        String filepath = "\"C:\\Users\\User\\Desktop\\MazeGame\\Alone_-_Color_Out.mp3\"";
+        String filepath = "C:\\Users\\rolan\\IdeaProjects\\MazeGame\\audio\\Alone_-_Color_Out.mp3";
         new Music().playMusic(filepath);
         JOptionPane.showMessageDialog(null, "Press ok to stop playing");
     }

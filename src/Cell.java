@@ -1,4 +1,5 @@
-public class Cell {
+import java.io.Serializable;
+public class Cell implements Serializable{
     //Create variables for the indexes of each wall on the boolean array wall;
     private final int topIndex = 0;
     private final int rightIndex = 1;

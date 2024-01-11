@@ -4,7 +4,7 @@ public class MainFrame extends JFrame {
     private MazeGeneration maze = new MazeGeneration(20);
     private Player player = new Player(maze);
     private Music musicPlayer;
-    private String musicFilePath = "path/to/your/music.wav"; // replace with actual path
+    private String musicFilePath = "C:\\Users\\rolan\\IdeaProjects\\MazeGame\\audio\\Alone_-_Color_Out.mp3"; // replace with actual path
 
     public MainFrame() {
         this.setTitle("MazeGeneration Game");

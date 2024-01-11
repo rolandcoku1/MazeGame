@@ -5,7 +5,6 @@ public class MazeGeneration {
     private final int mazeSize;
     private final int spacing;
     private final Random random = new Random();
-
     public MazeGeneration(int mazeSize){
         this.mazeSize = mazeSize;
         int width = 600;

@@ -1,6 +1,8 @@
 import javax.swing.*;
 import java.awt.*;
-public class Player extends JFrame {
+import java.io.Serializable;
+
+public class Player extends JFrame implements Serializable {
     private int playerPositionY;
     private int playerPositionX;
     private int treasureCount;
