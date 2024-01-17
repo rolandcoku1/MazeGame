@@ -8,12 +8,16 @@ public class MazeGraphicsPanel extends JPanel {
 
     private final MazeGeneration maze;
     private Image wallImage;
+    private Image background;
+    private Image treasureImage;
     public MazeGraphicsPanel(MazeGeneration maze) {
         this.setBounds(0,0,1000,650);
         this.maze = maze;
         try {
             // Load the PNG image for walls
             wallImage = ImageIO.read(new File("C:\\Users\\rolan\\IdeaProjects\\MazeGame\\src\\wall.png"));
+            background = ImageIO.read(new File("C:\\Users\\rolan\\IdeaProjects\\MazeGame\\src\\background.png"));
+            treasureImage = ImageIO.read(new File("C:\\Users\\rolan\\IdeaProjects\\MazeGame\\src\\coin1.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -27,6 +31,8 @@ public class MazeGraphicsPanel extends JPanel {
             int x = cell.getX() * maze.getSpacing();
             int y = cell.getY() * maze.getSpacing();
 
+
+            graphics.drawImage(background,x,y,maze.getSpacing(),maze.getSpacing(),null);
             if (cell.hasTopWall()) {
                 graphics.drawImage(wallImage, x, y, maze.getSpacing(), maze.getSpacing() / 8, null);
             }
@@ -38,6 +44,9 @@ public class MazeGraphicsPanel extends JPanel {
             }
             if (cell.hasBottomWall()) {
                 graphics.drawImage(wallImage, x, y + maze.getSpacing() - maze.getSpacing() / 8, maze.getSpacing(), maze.getSpacing() / 8, null);
+            }
+            if(cell.containsTreasure()){
+                graphics.drawImage(treasureImage, x+(maze.getSpacing()/4) , y+(maze.getSpacing()/4), maze.getSpacing()-40, maze.getSpacing()-40, null);
             }
         }
     }
